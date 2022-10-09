@@ -46,6 +46,9 @@ void loop() {
   
   bool bufferSent=false;
   bufferSent= ubidots.send();
+
+  float value =ubidots.get("84cca82c995c","Set_point");
+  Serial.println(value);
   if(bufferSent){
     Serial.print("Values sent by the device");
   }
