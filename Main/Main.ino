@@ -13,7 +13,7 @@ void loop(){
   if(lec==HIGH){
 
   }
-
+//hola
   if (bufferSent) {
     // Do something if values were sent properly
     digitalWrite(LED,HIGH)
