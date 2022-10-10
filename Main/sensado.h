@@ -1,5 +1,5 @@
 
-const int Trigger = 2;
+const int Trigger = 4;
 const int Echo = 15;
 long d;
   

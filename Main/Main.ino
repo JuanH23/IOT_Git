@@ -2,11 +2,11 @@
 #include "Ubidots.h"
 
 #define LED 2
-#define BT 15
+#define BT 5
 //Inicializacion Ubidots libreria//
 const char* UBIDOTS_TOKEN = "BBFF-B3opm3LHhAYXD5KlZcGkIggTt0VuFB";      // Put here your Ubidots TOKEN
-const char* WIFI_SSID = "AZXY";                                         // Put here your Wi-Fi SSID
-const char* WIFI_PASS = "1000940167";                                   // Put here your Wi-Fi password
+const char* WIFI_SSID = "Note10";                                         // Put here your Wi-Fi SSID
+const char* WIFI_PASS = "123456789";                                   // Put here your Wi-Fi password
 
 
 Ubidots ubidots(UBIDOTS_TOKEN, UBI_HTTP);
@@ -31,15 +31,13 @@ void loop(){
   if(lec==HIGH){
     float value1=d;
     ubidots.add("Variable_Name_One",value1);
-
+    bool bufferSent=false;
+    bufferSent= ubidots.send();
+    if (bufferSent) {
+      // Do something if values were sent properly
+      digitalWrite(LED,HIGH);
+      Serial.println("Values sent by the device");
+    }
   }
-  
-  bool bufferSent=false;
-  bufferSent= ubidots.send();
-  if (bufferSent) {
-    // Do something if values were sent properly
-    digitalWrite(LED,HIGH);
-    Serial.println("Values sent by the device");
-  }
-  delay(5000);
+  delay(100);
 }
